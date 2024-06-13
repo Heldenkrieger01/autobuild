@@ -1,4 +1,4 @@
-![Build-Push-And-Test Workflow](https://github.com/heldenkrieger01/autobuild/actions/workflows/build-push-and-deploy.yml/badge.svg)
+[![Build, Push and Deploy](https://github.com/Heldenkrieger01/autobuild/actions/workflows/build-push-and-deploy.yaml/badge.svg)](https://github.com/Heldenkrieger01/autobuild/actions/workflows/build-push-and-deploy.yaml)
 
 # Linux Tweet App
 
