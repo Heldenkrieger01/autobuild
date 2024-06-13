@@ -49,3 +49,16 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+  test-container:
+    name: Test our container
+    needs: build-and-push-image
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v2.3.4
+
+        - name: Test
+          run: |
+          docker container run --detach --publish 8080:80  ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+          docker ps
+          while ! curl --retry 10 --retry-delay 5 -v http://0.0.0.0:8080 >/dev/null; do sleep 1; done
